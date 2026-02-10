@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MMDL</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg" aria-hidden="true">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="grid"></div>
+  </div>
+
+  <header class="top">
+    <div class="wrap top-inner">
+      <a class="brand" href="#home">
+        <div class="mark">M</div>
+        <div class="brand-txt">
+          <div class="btitle" data-edit="brand.title">MMDL</div>
+          <div class="bsub" data-edit="brand.subtitle">Mechanics • Materials • Data Lab</div>
+        </div>
+      </a>
+
+      <button class="hamb" id="hamb" aria-expanded="false" aria-controls="nav">☰</button>
+      <nav class="nav" id="nav"></nav>
+    </div>
+  </header>
+
+  <main>
+        <section class="wrap hero" id="home">
+      <div class="hero-grid">
+        <div class="hero-card">
+          <div class="chip" data-edit="hero.chip">Hanbat National University</div>
+          <div class="hero-kicker" data-edit="hero.kicker">공과대학 · 신소재공학과</div>
+          <h1 class="h1" data-edit="hero.title">Mechanics-driven Design for Advanced Materials</h1>
+          <p class="lead" data-edit="hero.intro">
+            여기에 Google Sites HOME 소개 문장을 그대로 붙여넣으면 됩니다.
+          </p>
+
+          <div class="actions actions-tabs" id="heroActions"></div>
+
+          <div class="stats stats-strong" id="heroStats"></div>
+        </div>
+
+        <div class="hero-media">
+          <div class="media-frame">
+            <div class="media-slide" id="heroSlide" aria-label="Hero image"></div>
+            <div class="media-controls">
+              <button class="mctl" id="mediaPrev" aria-label="Previous">‹</button>
+              <button class="mctl" id="mediaPlay" aria-label="Play/Pause">⏵</button>
+              <button class="mctl" id="mediaNext" aria-label="Next">›</button>
+            </div>
+            <div class="media-caption" id="mediaCaption"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="wrap section" id="news">
+      <div class="sec-head">
+        <h2 data-edit="news.title">News</h2>
+        <p data-edit="news.desc">최근 업데이트 / 공지</p>
+      </div>
+      <div class="news-grid" id="newsGrid"></div>
+    </section>
+
+    <section class="wrap section" id="research">
+      <div class="sec-head">
+        <h2 data-edit="research.title">Research Themes</h2>
+        <p data-edit="research.desc">아이콘을 누르면 촤라르르 펼쳐지는 섹션(아코디언) 예시</p>
+      </div>
+
+      <div class="accordion" id="themes"></div>
+
+      <div class="cards" id="highlights"></div>
+    </section>
+
+    <section class="wrap section" id="members">
+      <div class="sec-head">
+        <h2 data-edit="members.title">Members</h2>
+        <p data-edit="members.desc">프로필 카드(사진은 나중에)</p>
+      </div>
+      <div class="grid3" id="membersGrid"></div>
+    </section>
+
+    <section class="wrap section" id="pubs">
+      <div class="sec-head">
+        <h2 data-edit="pubs.title">Publications</h2>
+        <p data-edit="pubs.desc">연도별 펼침(아코디언)</p>
+      </div>
+      <div class="accordion" id="pubYears"></div>
+    </section>
+
+    <section class="wrap section" id="contact">
+      <div class="sec-head">
+        <h2 data-edit="contact.title">Contact</h2>
+        <p data-edit="contact.desc">주소/메일/연락처</p>
+      </div>
+      <div class="grid3" id="contactGrid"></div>
+    </section>
+
+    <footer class="wrap foot">
+      <div class="foot-row">
+        <span data-edit="footer.left">© MMDL</span>
+        <span class="muted" data-edit="footer.right">Built on GitHub Pages</span>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Floating edit button -->
+  <button class="fab" id="editFab" title="Edit (owner)">✏️</button>
+
+  <!-- Editor drawer -->
+  <aside class="drawer" id="drawer" aria-hidden="true">
+    <div class="backdrop" id="backdrop"></div>
+    <div class="panel" role="dialog" aria-modal="true" aria-label="Editor">
+      <div class="panel-head">
+        <div>
+          <div class="panel-title">Live Editor</div>
+          <div class="panel-sub">페이지에서 클릭해서 수정 → Save</div>
+        </div>
+        <button class="xbtn" id="closeDrawer">✕</button>
+      </div>
+
+      <div class="panel-body">
+        <div class="row">
+          <div class="label">Owner passcode</div>
+          <input id="pass" type="password" placeholder="비밀번호 입력" />
+          <button class="btn primary" id="unlock">Unlock</button>
+          <div class="hint muted">※ 정적 사이트라 “완전한 보안”은 아니고, 편집 UI를 잠그는 용도입니다.</div>
+        </div>
+
+        <hr/>
+
+        <div class="row">
+          <div class="label">Edit tips</div>
+          <ul class="muted">
+            <li>편집 모드 Unlock 후, 페이지의 텍스트를 클릭하면 바로 편집됩니다.</li>
+            <li>Save는 내 브라우저(localStorage)에 저장됩니다(다른 사람에게는 적용 X).</li>
+            <li>모두에게 적용하려면 Export JSON(구조 데이터) 또는 Export HTML(화면 그대로) 중 하나를 골라서, 깃허브에 반영해야 합니다.</li>
+          </ul>
+        </div>
+
+        <div class="row actions-row">
+          <button class="btn" id="saveLocal">Save (this browser)</button>
+          <button class="btn" id="resetLocal">Reset</button>
+          <button class="btn ghost" id="exportJson">Export JSON</button>
+        <button class="btn ghost" id="exportHtml">Export HTML</button>
+        </div>
+
+        <div class="row">
+          <div class="label">Exported JSON</div>
+          <textarea id="exportBox" rows="10" readonly></textarea>
+        </div>
+
+        <div class="row">
+          <div class="label">Exported HTML (main)</div>
+          <textarea id="exportHtmlBox" rows="10" readonly></textarea>
+        </div>
+
+      </div>
+    </div>
+  </aside>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
